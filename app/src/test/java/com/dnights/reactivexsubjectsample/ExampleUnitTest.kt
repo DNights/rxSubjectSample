@@ -1,6 +1,5 @@
 package com.dnights.reactivexsubjectsample
 
-import com.dnights.reactivexsubjectsample.rx.RxSubject
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -14,61 +13,5 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
-    }
-
-    @Test
-    fun rxSubjectTest(){
-
-        val rxSubject = RxSubject()
-
-        rxSubject.runOnNext()
-
-        rxSubject.asyncSubject
-            .subscribe{
-                println(it)
-            }
-
-        rxSubject.behaviorSubject
-            .subscribe {
-                println(it)
-            }
-
-        rxSubject.publishSubject
-            .subscribe{
-                println()
-            }
-
-        rxSubject.replaySubject
-            .subscribe {
-                println()
-            }
-    }
-
-    @Test
-    fun rxSubjectTest2(){
-
-        val rxSubject = RxSubject()
-
-        rxSubject.asyncSubject
-            .subscribe{
-                println(it)
-            }
-
-        rxSubject.behaviorSubject
-            .subscribe {
-                println(it)
-            }
-
-        rxSubject.publishSubject
-            .subscribe{
-                println()
-            }
-
-        rxSubject.replaySubject
-            .subscribe {
-                println()
-            }
-
-        rxSubject.runOnNext()
     }
 }
