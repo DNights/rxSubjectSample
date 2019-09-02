@@ -1,62 +1,62 @@
 package com.dnights.reactivexsubjectsample.rx
 
+import io.reactivex.android.schedulers.AndroidSchedulers
 import org.junit.Assert.*
 import org.junit.Test
+import java.util.concurrent.TimeUnit
 
 class RxSubjectTest {
     @Test
-    fun rxSubjectTest(){
+    fun asyncSubjectTest(){
 
         val rxSubject = RxSubject()
 
-        rxSubject.runOnNext()
+        rxSubject.runOnNextWithAsyncSubject()
 
         rxSubject.asyncSubject
             .subscribe{
                 println(it)
             }
+    }
+
+    @Test
+    fun behaviorSubjectTest(){
+
+        val rxSubject = RxSubject()
 
         rxSubject.behaviorSubject
             .subscribe {
                 println(it)
             }
 
-        rxSubject.publishSubject
-            .subscribe{
-                println()
-            }
+        rxSubject.runOnNextWithBehaviorSubject()
+    }
 
-        rxSubject.replaySubject
-            .subscribe {
+    @Test
+    fun publishSubjectTest(){
+
+        val rxSubject = RxSubject()
+
+        rxSubject.runOnNextWithPublishSubject()
+
+        rxSubject.publishSubject
+            .debounce(100L, TimeUnit.MILLISECONDS)
+            .subscribe{
                 println()
             }
     }
 
     @Test
-    fun rxSubjectTest2(){
+    fun replaySubjectTest(){
 
         val rxSubject = RxSubject()
-
-        rxSubject.asyncSubject
-            .subscribe{
-                println(it)
-            }
-
-        rxSubject.behaviorSubject
-            .subscribe {
-                println(it)
-            }
-
-        rxSubject.publishSubject
-            .subscribe{
-                println()
-            }
 
         rxSubject.replaySubject
             .subscribe {
                 println()
             }
 
-        rxSubject.runOnNext()
+        rxSubject.runOnNextWithReplaySubject()
     }
+
 }
