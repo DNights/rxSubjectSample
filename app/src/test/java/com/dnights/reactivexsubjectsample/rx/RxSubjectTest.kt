@@ -13,6 +13,15 @@ class RxSubjectTest {
         rxSubject.runOnNextWithAsyncSubject()
 
         rxSubject.asyncSubject
+            .doOnComplete {
+                println("asyncSubjectTest doOnComplete")
+            }
+            .doOnSubscribe {
+                println("asyncSubjectTest doOnSubscribe")
+            }
+            .doOnDispose {
+                println("asyncSubjectTest doOnDispose")
+            }
             .subscribe{
                 println(it)
             }
@@ -24,6 +33,15 @@ class RxSubjectTest {
         val rxSubject = RxSubject()
 
         rxSubject.behaviorSubject
+            .doOnComplete {
+                println("behaviorSubjectTest doOnComplete")
+            }
+            .doOnSubscribe {
+                println("behaviorSubjectTest doOnSubscribe")
+            }
+            .doOnDispose {
+                println("behaviorSubjectTest doOnDispose")
+            }
             .subscribe {
                 println(it)
             }
@@ -36,13 +54,22 @@ class RxSubjectTest {
 
         val rxSubject = RxSubject()
 
-        rxSubject.runOnNextWithPublishSubject()
-
         rxSubject.publishSubject
             .debounce(100L, TimeUnit.MILLISECONDS)
-            .subscribe{
-                println()
+            .doOnComplete {
+                println("publishSubjectTest doOnComplete")
             }
+            .doOnSubscribe {
+                println("publishSubjectTest doOnSubscribe")
+            }
+            .doOnDispose {
+                println("publishSubjectTest doOnDispose")
+            }
+            .subscribe{
+                println(it)
+            }
+
+        rxSubject.runOnNextWithPublishSubject()
     }
 
     @Test
@@ -51,8 +78,17 @@ class RxSubjectTest {
         val rxSubject = RxSubject()
 
         rxSubject.replaySubject
+            .doOnComplete {
+                println("replaySubjectTest doOnComplete")
+            }
+            .doOnSubscribe {
+                println("replaySubjectTest doOnSubscribe")
+            }
+            .doOnDispose {
+                println("replaySubjectTest doOnDispose")
+            }
             .subscribe {
-                println()
+                println(it)
             }
 
         rxSubject.runOnNextWithReplaySubject()
