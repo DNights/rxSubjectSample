@@ -1,16 +1,25 @@
 package com.dnights.reactivexsubjectsample.rx
 
+import io.reactivex.disposables.CompositeDisposable
+import org.junit.After
 import org.junit.Assert.*
 import org.junit.Test
 import java.util.concurrent.TimeUnit
 
 class RxSubjectTest {
+
+    private val disposables by lazy {
+        CompositeDisposable()
+    }
+
+    @After
+    fun disposerbleRxSubject(){
+        disposables.clear()
+    }
+
     @Test
     fun asyncSubjectTest(){
-
         val rxSubject = RxSubject()
-
-        rxSubject.runOnNextWithAsyncSubject()
 
         rxSubject.asyncSubject
             .doOnComplete {
@@ -24,7 +33,9 @@ class RxSubjectTest {
             }
             .subscribe{
                 println(it)
-            }
+            }.apply { disposables.add(this) }
+
+        rxSubject.runOnNextWithAsyncSubject()
     }
 
     @Test
@@ -44,7 +55,7 @@ class RxSubjectTest {
             }
             .subscribe {
                 println(it)
-            }
+            }.apply { disposables.add(this) }
 
         rxSubject.runOnNextWithBehaviorSubject()
     }
@@ -67,7 +78,7 @@ class RxSubjectTest {
             }
             .subscribe{
                 println(it)
-            }
+            }.apply { disposables.add(this) }
 
         rxSubject.runOnNextWithPublishSubject()
     }
@@ -89,7 +100,7 @@ class RxSubjectTest {
             }
             .subscribe {
                 println(it)
-            }
+            }.apply { disposables.add(this) }
 
         rxSubject.runOnNextWithReplaySubject()
     }

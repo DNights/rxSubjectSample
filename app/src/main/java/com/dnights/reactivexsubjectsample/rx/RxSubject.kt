@@ -24,15 +24,13 @@ class RxSubject {
         for (i in 0..100){
             behaviorSubject.onNext("behaviorSubject onNext $i")
         }
+
+        behaviorSubject.onComplete()
     }
 
     fun runOnNextWithPublishSubject(){
         for (i in 0..100){
             publishSubject.onNext("publishSubject onNext $i")
-
-            if(i % 10 == 0) publishSubject.subscribe{
-                println("subscribe - $it")
-            }
         }
 
         publishSubject.onComplete()
@@ -41,10 +39,6 @@ class RxSubject {
     fun runOnNextWithReplaySubject(){
         for (i in 0..100){
             replaySubject.onNext("replaySubject onNext $i")
-
-            if(i % 10 == 0) replaySubject.subscribe{
-                println("subscribe - $it")
-            }
         }
 
         replaySubject.onComplete()
