@@ -4,7 +4,6 @@ import io.reactivex.subjects.AsyncSubject
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 import io.reactivex.subjects.ReplaySubject
-import java.util.concurrent.TimeUnit
 
 class RxSubject {
 

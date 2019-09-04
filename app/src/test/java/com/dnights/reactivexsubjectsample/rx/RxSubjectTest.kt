@@ -1,6 +1,5 @@
 package com.dnights.reactivexsubjectsample.rx
 
-import io.reactivex.android.schedulers.AndroidSchedulers
 import org.junit.Assert.*
 import org.junit.Test
 import java.util.concurrent.TimeUnit
