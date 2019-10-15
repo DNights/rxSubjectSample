@@ -1,5 +1,9 @@
 # rxSubjectSample
 
-http://reactivex.io/documentation/ko/subject.html
+[ReactiveX - Subject]
 
-해당 내용을 참고하여 Test Code 작성
+https://dnight.tistory.com/entry/ReactiveX-Subject
+
+[참고링크]
+- http://reactivex.io/documentation/ko/subject.html
+- https://duzi077.tistory.com/178
